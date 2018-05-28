@@ -22,6 +22,7 @@ public class ParticleSystem {
     Type[] type = new Type[MAX_PARTICLES];
     Vector2[] position = new Vector2[MAX_PARTICLES];
     Vector2[] velocity = new Vector2[MAX_PARTICLES];
+    float[] lifetime = new float[MAX_PARTICLES];
 
     public void init(){
         spritesheet = new Texture(Gdx.files.internal("explosion.png"));
@@ -39,12 +40,24 @@ public class ParticleSystem {
 
         for(int i =0; i<MAX_PARTICLES; i++){
             type[i]=Type.NONE;
-            position[i]= new Vector2();
-            velocity[i]= new Vector2();
+            position[i]= new Vector2(0,0);
+            velocity[i]= new Vector2(0,0);
+            lifetime[i]= 0;
+        }
+    }
+    private void update(float deltaTime) {
+        for(int i =0; i<MAX_PARTICLES; i++) {
+            if(type[i]!=Type.NONE){
+                if(lifetime[i]>=0){
+                    type[i]=Type.NONE;
+                }else{
+                    position[i].mulAdd(velocity[i], deltaTime);
+                }
+            }
         }
     }
 
-    public int spawn(Type t){
+        public int spawn(Type t){
         if(t==null) return -1;
 
         int i = -1;
