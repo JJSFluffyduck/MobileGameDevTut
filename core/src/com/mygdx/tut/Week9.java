@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Week1 extends ApplicationAdapter {
+public class Week9 extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	
