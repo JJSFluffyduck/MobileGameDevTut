@@ -39,6 +39,13 @@ public class ParticleSystem {
         explosionFrames[8] = new TextureRegion(spritesheet, 278, 94, 87, 87);
         explosionFrames[9] = new TextureRegion(spritesheet, 370, 94, 87, 87);
 
+        smokeFrames[0] = new TextureRegion(spritesheet, 2, 306, 45,45);
+        smokeFrames[1] = new TextureRegion(spritesheet, 52, 306, 45,45);
+        smokeFrames[2] = new TextureRegion(spritesheet, 102, 306, 45,45);
+        smokeFrames[3] = new TextureRegion(spritesheet, 152, 306, 45,45);
+        smokeFrames[4] = new TextureRegion(spritesheet, 202, 306, 45,45);
+        smokeFrames[5] = new TextureRegion(spritesheet, 252, 306, 45,45);
+
         for(int i =0; i<MAX_PARTICLES; i++){
             type[i]=Type.NONE;
             position[i]= new Vector2(0,0);
@@ -61,7 +68,7 @@ public class ParticleSystem {
     public void render (SpriteBatch SB) {
         for(int i =0; i<MAX_PARTICLES; i++) {
             if(type[i]!=Type.NONE && lifetime[i]>0) {
-                
+                SB.draw();
             }
             }
     }
