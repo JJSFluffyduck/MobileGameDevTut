@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -14,6 +15,7 @@ public class ParticleSystem {
     public static final int MAX_PARTICLES = 128;
     public static final float EXPLOSION_LIFETIME = 0.5f;
     public static final float  SMOKE_LIFETIME = 3.0f;
+
     public enum Type {NONE, EXPLOSION, SMOKE};
 
     public Texture spritesheet;
@@ -53,10 +55,10 @@ public class ParticleSystem {
             lifetime[i]= 0;
         }
     }
-    private void update(float deltaTime) {
+    public void update(float deltaTime) {
         for(int i =0; i<MAX_PARTICLES; i++) {
             if(type[i]!=Type.NONE){
-                if(lifetime[i]>=0){
+                if(lifetime[i]<=0){
                     type[i]=Type.NONE;
                 }else{
                     position[i].mulAdd(velocity[i], deltaTime);
@@ -68,7 +70,15 @@ public class ParticleSystem {
     public void render (SpriteBatch SB) {
         for(int i =0; i<MAX_PARTICLES; i++) {
             if(type[i]!=Type.NONE && lifetime[i]>0) {
-                SB.draw();
+                if(type[i]==Type.EXPLOSION) {
+                    SB.begin();
+                    SB.draw(explosionFrames[3], 1, 1);
+                    SB.end();
+                }else{
+                    SB.begin();
+                    SB.draw(smokeFrames[3], 1, 1);
+                    SB.end();
+                }
             }
             }
     }
@@ -87,6 +97,15 @@ public class ParticleSystem {
         if(i<0) return -1;
 
         type[i] = t;
+            position[i] = new Vector2(50,50);
+            if(t==Type.SMOKE) {
+                velocity[i] = new Vector2(MathUtils.random(-20f, 20f),MathUtils.random(-20f, 20f));
+                lifetime[i] = SMOKE_LIFETIME;
+            }else if(t==Type.EXPLOSION) {
+                lifetime[i] = EXPLOSION_LIFETIME;
+            }
+
+
         return i;
     }
     public void dispose () {
