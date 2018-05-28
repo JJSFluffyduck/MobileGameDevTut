@@ -21,4 +21,8 @@ public class ParticleSystem {
     Type[] type = new Type[MAX_PARTICLES];
     Vector2[] position = new Vector2[MAX_PARTICLES];
     Vector2[] velocity = new Vector2[MAX_PARTICLES];
+
+    public void init(){
+        spritesheet = new Texture();
+    }
 }
