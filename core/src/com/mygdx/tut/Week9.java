@@ -8,12 +8,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Week9 extends ApplicationAdapter {
 	SpriteBatch batch;
-	ParticleSystem Particles = new ParticleSystem();
+    Texture img;
+
+    ParticleSystem Particles = new ParticleSystem();
 
 	boolean wasTouchted = false;
 
 	@Override
 	public void create () {
+        batch = new SpriteBatch();
+        img = new Texture("explosion.png");
 
         Particles.init();
     }
@@ -22,6 +26,10 @@ public class Week9 extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        batch.begin();
+        batch.draw(img, 0, 0);
+        batch.end();
 
 
         float deltaTime = Gdx.graphics.getDeltaTime();
@@ -43,11 +51,13 @@ public class Week9 extends ApplicationAdapter {
         wasTouchted = Gdx.input.isTouched();
 
         Particles.render(batch);
+
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
+		img.dispose();
         Particles.dispose();
 	}
 }

@@ -58,6 +58,7 @@ public class ParticleSystem {
     public void update(float deltaTime) {
         for(int i =0; i<MAX_PARTICLES; i++) {
             if(type[i]!=Type.NONE){
+                System.out.println(type[i] +" - "+lifetime[i]);
                 if(lifetime[i]<=0){
                     type[i]=Type.NONE;
                 }else{
