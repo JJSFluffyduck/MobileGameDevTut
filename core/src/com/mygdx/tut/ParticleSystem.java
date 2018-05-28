@@ -2,6 +2,7 @@ package com.mygdx.tut;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
@@ -57,6 +58,13 @@ public class ParticleSystem {
         }
     }
 
+    public void render (SpriteBatch SB) {
+        for(int i =0; i<MAX_PARTICLES; i++) {
+            if(type[i]!=Type.NONE && lifetime[i]>0) {
+                
+            }
+            }
+    }
         public int spawn(Type t){
         if(t==null) return -1;
 
