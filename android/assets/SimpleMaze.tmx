@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="SimpleGraphics32" tilewidth="32" tileheight="32">
+  <image source="simpleGraphics_tiles32x32_0.png" width="256" height="160"/>
+ </tileset>
+ <layer name="Maze" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJwTYGBgEBjFo3gUj+JRPIpJxABc0hkB
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="20" height="20">
+  <object name="Player" type="Player" x="81" y="82"/>
+  <object name="Goal" type="Goal" x="369" y="498"/>
+  <object name="Enemy" type="Enemy" x="240" y="51"/>
+  <object name="Enemy" type="Enemy" x="83" y="557"/>
+  <object name="Enemy" type="Enemy" x="464" y="340"/>
+ </objectgroup>
+ <layer name="Collision" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzV00EKACAIBED/4v//2F1a3VUJErwEDmbmZubLGeN2xsQrr+t3PTQrdq7sTCb3rbzMnXjMTlXn0etG5jF7r3rb/aE+s3/FeKgXxcvqFI+pYzwUyrv84m3mAbYbE44=
+  </data>
+ </layer>
+</map>
